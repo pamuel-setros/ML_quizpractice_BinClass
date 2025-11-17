@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Binary Classification Visualizer</title>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Neural Network Classification Visualizer</h1>
+        
+        <div class="main-content">
+            <!-- Left sidebar with controls -->
+            <div class="sidebar">
+                <h2>Data Generation</h2>
+                <div class="control-group">
+                    <label for="clusterTightness">Cluster Tightness</label>
+                    <input type="range" id="clusterTightness" min="0.1" max="2" step="0.1" value="0.5">
+                    <span id="clusterTightnessValue">0.5</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="ringWidth">Ring Width</label>
+                    <input type="range" id="ringWidth" min="0.2" max="2" step="0.1" value="1.0">
+                    <span id="ringWidthValue">1.0</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="mixingPercent">Mixing Percentage (%)</label>
+                    <input type="range" id="mixingPercent" min="0" max="20" step="1" value="5">
+                    <span id="mixingPercentValue">5%</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="numPoints">Number of Points</label>
+                    <input type="range" id="numPoints" min="50" max="500" step="50" value="200">
+                    <span id="numPointsValue">200</span>
+                </div>
+
+                <h2>Network Configuration</h2>
+                <div class="control-group">
+                    <label for="hiddenLayers">Hidden Layers</label>
+                    <input type="range" id="hiddenLayers" min="0" max="5" step="1" value="2">
+                    <span id="hiddenLayersValue">2</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="neuronsPerLayer">Neurons per Layer</label>
+                    <input type="range" id="neuronsPerLayer" min="4" max="32" step="2" value="8">
+                    <span id="neuronsPerLayerValue">8</span>
+                </div>
+
+                <h2>Training Parameters</h2>
+                <div class="control-group">
+                    <label for="learningRate">Learning Rate</label>
+                    <input type="range" id="learningRate" min="0.001" max="0.5" step="0.01" value="0.1">
+                    <span id="learningRateValue">0.1</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="epochs">Epochs</label>
+                    <input type="range" id="epochs" min="1" max="500" step="10" value="100">
+                    <span id="epochsValue">100</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="animationSpeed">Animation Speed (updates/sec)</label>
+                    <input type="range" id="animationSpeed" min="1" max="100" step="1" value="30">
+                    <span id="animationSpeedValue">30</span>
+                </div>
+
+                <button id="trainButton" class="btn-primary">Train Network</button>
+                <button id="pauseButton" class="btn-secondary" disabled>Pause Training</button>
+                <button id="resetButton" class="btn-secondary">Reset Network</button>
+
+                <div id="trainingStatus" class="status">Ready</div>
+            </div>
+
+            <!-- Center section with graph -->
+            <div class="center-section">
+                <canvas id="mainCanvas" width="600" height="600"></canvas>
+                <div class="info-panel">
+                    <div>Epoch: <span id="currentEpoch">0</span>/<span id="totalEpochs">100</span></div>
+                    <div>Loss: <span id="currentLoss">0.000</span></div>
+                    <div>Accuracy: <span id="currentAccuracy">0.00%</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom section with network visualization -->
+        <div class="network-viz-container">
+            <h2>Network Architecture</h2>
+            <canvas id="networkCanvas" width="800" height="150"></canvas>
+        </div>
+    </div>
+
+    <script src="src/app.js"></script>
+</body>
+</html>
